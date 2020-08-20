@@ -97,6 +97,25 @@ void show()
     
 }
 
+void revshow()
+{
+    struct node * temp;
+    temp=head;
+    while (temp->next!=NULL)
+    {
+        //traversing till last element's next part
+        temp=temp->next;
+    }
+
+    while(temp!=NULL)
+    {
+        printf("%d   ",temp->data);
+        temp=temp->prev;
+    }
+    printf("");
+    
+}
+
 int count()
 {
     struct node *temp;
@@ -121,6 +140,7 @@ void insertAtBet(int value,int pos)
         if (c==pos)
         {
             newnode->next = temp->next;
+            newnode->prev = temp;
             temp->next = newnode;
             break;
         }   
@@ -148,6 +168,7 @@ void deleteAtBet(int pos){
 
 void menu()
 {
+    printf("\n\n---------------------------------------------------------------------------------\n\n");
     printf("1. Insertion from beginning \n");
     printf("2. Insertion for end \n");
     printf("3. Deletion from beginning \n");
@@ -157,12 +178,13 @@ void menu()
     printf("7. Deletion in between \n"); 
     printf("8. Show my list \n");
     printf("9. Exit() \n");
+    printf("\n\n---------------------------------------------------------------------------------\n\n");
     
 }
 
 int main()
 {
-    int c,x,pos;
+    int c,x,pos,f;
     while (1)
     {
 
@@ -226,7 +248,15 @@ int main()
         
         case 8:
             /* Showing the list */
-            show();
+            
+            printf("\n********************************************************************\n");
+            printf("ENter your choice : \n 1.Print \n2.reverse print");
+            scanf("%d",&f);
+            if (f==2)
+                revshow();
+            else
+                show();
+            printf("\n********************************************************************\n");
             break;
         
         case 9:
@@ -235,6 +265,7 @@ int main()
             break;
         
         default:
+        printf("ENter some valid option \n");
             break;
         }
     }
