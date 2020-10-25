@@ -51,8 +51,8 @@ void PreOrder(struct node* root)
     if (root == NULL)
         return;
 
-    PreOrder(root->left);
     printf("%d   ",root->data);
+    PreOrder(root->left);
     PreOrder(root->right);
 }
 
@@ -63,8 +63,8 @@ void postOrder(struct node* root)
         return;
 
     postOrder(root->left);
-    printf("%d   ",root->data);
     postOrder(root->right);
+    printf("%d   ",root->data);
 }
 //                      *************************************************************
 
@@ -76,8 +76,17 @@ int main()
     createLeftNode(root,2);
     createRightNode(root,3);
 
+    printf("INORDER traversal : ");
     inOrder(root);
+    printf("\n");
+
+    printf("PREORDER traversal : ");
     PreOrder(root);
+    printf("\n");
+
+    printf("POSTORDER traversal : ");
     postOrder(root);
+    printf("\n");
+
     return 0;
 }
