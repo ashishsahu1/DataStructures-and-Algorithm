@@ -50,24 +50,33 @@ void PreOrder(struct node* root)
 
 int main()
 {
-    int val;
+    int val,ch;
     struct node *root = NULL;
-    root = insert(root,3);
-    root = insert(root,10);
-    root = insert(root,14);
-    root = insert(root,7);
-    root = insert(root,6);
-    root = insert(root,3);
-    root = insert(root,2);
-    root = insert(root,46);
-    root = insert(root,24);
 
     while (1)
     {
-        printf("Enter the value in tree : ");
-        scanf("%d",&val);
+        printf("******MENU******\n");
+        printf("1.Enter value.\n");
+        printf("2.Search\n");
+        printf("3.Delete\n");
+        printf("4.print\n");
+        printf("5.Exit.\n");
+        printf("Enter the choice: ");
+        scanf("%d",&ch);
 
-        root = insert(root,val);
+        switch (ch)
+        {
+        case 1:
+            printf("Enter the value in tree : ");
+            scanf("%d",&val);
+            root = insert(root,val);
+            break;
+        
+        default:
+            break;
+        }
+
+        
     }
     
 
