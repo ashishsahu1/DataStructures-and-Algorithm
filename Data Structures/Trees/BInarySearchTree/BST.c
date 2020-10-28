@@ -30,16 +30,41 @@ struct node* insert(struct node *root ,int value)
     return root;
 }
 
+//******************************************************************************************
+
 void inOrder(struct node* root)
 {
-    if (root!= NULL)
-    {
-        inOrder(root -> left);
-        printf("%d   ",root->data);
-        inOrder(root -> right);
-    }
-    
+    if (root == NULL)
+        return;
+
+    inOrder(root->left);
+    printf("%d   ",root->data);
+    inOrder(root->right);
 }
+
+// Pre-Order traversal
+void PreOrder(struct node* root)
+{
+    if (root == NULL)
+        return;
+
+    printf("%d   ",root->data);
+    PreOrder(root->left);
+    PreOrder(root->right);
+}
+
+// Post-Order traversal
+void postOrder(struct node* root)
+{
+    if (root == NULL)
+        return;
+
+    postOrder(root->left);
+    postOrder(root->right);
+    printf("%d   ",root->data);
+}
+
+//******************************************************************************************
 
 int main()
 {
@@ -54,6 +79,14 @@ int main()
     root = insert(root,46);
     root = insert(root,24);
 
+    printf("INORDER : ");
     inOrder(root);
+
+    printf("\nPREORDER : ");
+    PreOrder(root);
+
+    printf("\nPOSTORDER : ");
+    postOrder(root);
+
     return 0;
 }
