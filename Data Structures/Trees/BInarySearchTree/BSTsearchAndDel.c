@@ -33,7 +33,7 @@ struct node* insert(struct node *root ,int value)
 }
 
 //******************************************************************************************
-void PreOrder(struct node* root)
+void search(struct node* root)
 {
     if (root == NULL)
         return;
@@ -42,11 +42,49 @@ void PreOrder(struct node* root)
     {
         printf("Yes the given key is present in the tree\n");
     }
+    else
+    {
+        printf("Value not present\n");
+    }
+    
     
     PreOrder(root->left);
     PreOrder(root->right);
 }
 //******************************************************************************************
+
+
+void inOrder(struct node* root)
+{
+    if (root == NULL)
+        return;
+
+    inOrder(root->left);
+    printf("%d   ",root->data);
+    inOrder(root->right);
+}
+
+// Pre-Order traversal
+void PreOrder(struct node* root)
+{
+    if (root == NULL)
+        return;
+
+    printf("%d   ",root->data);
+    PreOrder(root->left);
+    PreOrder(root->right);
+}
+
+// Post-Order traversal
+void postOrder(struct node* root)
+{
+    if (root == NULL)
+        return;
+
+    postOrder(root->left);
+    postOrder(root->right);
+    printf("%d   ",root->data);
+}
 
 int main()
 {
@@ -72,6 +110,31 @@ int main()
             root = insert(root,val);
             break;
         
+        case 2:
+            printf("Enter the to be searched : ");
+            scanf("%d",&key);
+            search(root);
+            break;
+
+        case 3:
+        break;
+
+        case 4:
+                printf("INORDER : ");
+                inOrder(root);
+
+                printf("\nPREORDER : ");
+                PreOrder(root);
+
+                printf("\nPOSTORDER : ");
+                postOrder(root);
+            break;
+
+        case 5:
+        exit(0);
+        break;
+
+
         default:
             break;
         }
